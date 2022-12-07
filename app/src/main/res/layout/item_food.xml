@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item"
+            type="com.leonardojpr.frytest.domain.api.response.MealsItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:id="@+id/img_food"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            mutableLoadImage="@{item.strMealThumb}"
+            android:background="@drawable/ic_launcher_foreground"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:text="@{item.strMeal}"
+            app:layout_constraintLeft_toRightOf="@id/img_food"
+            app:layout_constraintTop_toTopOf="@id/img_food"
+            tools:text="Titulo" />
+
+        <TextView
+            android:id="@+id/description_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp"
+            android:text="@{item.strCategory}"
+            app:layout_constraintBottom_toTopOf="@id/youtube_textview"
+            app:layout_constraintLeft_toRightOf="@id/img_food"
+            app:layout_constraintTop_toBottomOf="@id/title_textview"
+            tools:text="Descripcion" />
+
+        <TextView
+            android:id="@+id/youtube_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/img_food"
+            app:layout_constraintLeft_toRightOf="@id/img_food"
+            android:ellipsize="end"
+            android:textColor="@color/teal_200"
+            mutableOpenLink="@{item.strYoutube}"
+            app:layout_constraintTop_toBottomOf="@id/description_textview"
+            tools:text="www.youtube.com" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
