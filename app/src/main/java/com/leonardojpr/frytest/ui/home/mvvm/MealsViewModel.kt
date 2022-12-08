@@ -46,6 +46,4 @@ class MealsViewModel @Inject constructor(private val mealUseCase: MealUseCase) :
         class Loading(val isLoading: Boolean) : MealsUIState()
         class LoadData(val item: MealsItem? = null) : MealsUIState()
     }
-
-
 }

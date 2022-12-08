@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class MealUseCase @Inject constructor(private val repository: MealsRepository){
 
-    private val refreshIntervalMs: Long = 0
+    private val refreshIntervalMs: Long = 5000
     private val items = mutableListOf<MealsItem>()
     private val limitRequest = 20
 
@@ -19,12 +19,12 @@ class MealUseCase @Inject constructor(private val repository: MealsRepository){
 
         while (items.size < limitRequest) {
             val response = repository.getMeals(emitter)
-            response?.let {
-                val list = response.meals
+            response?.let {meals ->
+                val list = meals.meals
                 var find = items.contains(list!!.first())
                 if (!find) {
-                    items.add(list!!.first())
-                    emit(MealsViewModel.MealsUIState.LoadData(list!!.first()))
+                    items.add(list.first())
+                    emit(MealsViewModel.MealsUIState.LoadData(list.first()))
                 }
             }
             delay(refreshIntervalMs)
